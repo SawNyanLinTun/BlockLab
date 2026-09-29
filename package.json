@@ -1,0 +1,14 @@
+{
+  "name": "blocklab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interactive lessons on the cryptography behind Bitcoin for middle school students, in English, Thai and Burmese.",
+  "type": "module",
+  "scripts": {
+    "start": "node tools/serve.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
