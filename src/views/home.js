@@ -1,3 +1,4 @@
+import { labText } from '../i18n/lab.js';
 import { LESSONS, MISSIONS, nextLesson } from '../content/course.js';
 import { lt, t, unitBlurb, unitTitle } from '../i18n/strings.js';
 import { $ } from '../lib/util.js';
@@ -19,6 +20,7 @@ function renderHome() {
         <div class="cta">
           <a class="btn" href="#l-${(nx || LESSONS[0]).id}">${n === 0 ? t('start1') : nx ? `${t('cont')}: ${nx.num} ${lt(nx, 'title')}` : t('replay')} ${arrow}</a>
           <a class="btn ghost" href="#map">${t('seeMap')}</a>
+          <a class="btn ghost" href="#lab">${labText().nav} ${arrow}</a>
         </div>
       </div>
       <div class="chain">
@@ -47,3 +49,4 @@ function renderHome() {
 
 
 export { renderHome };
+

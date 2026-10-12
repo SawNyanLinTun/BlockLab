@@ -1,3 +1,5 @@
+import { renderBitcoinLab } from './views/bitcoin-lab.js';
+import { labText } from './i18n/lab.js';
 import { byId } from './content/course.js';
 import { getLang, setExplainLang, setSiteLang, t } from './i18n/strings.js';
 import { $ } from './lib/util.js';
@@ -12,6 +14,7 @@ function applyLang() {
   document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === getLang())));
   $('#nav-course').textContent = t('course');
   $('#nav-about').textContent = t('about');
+  $('#nav-lab').textContent = labText().nav;
 }
 function setLang(code) {
   setSiteLang(code); setExplainLang(code);
@@ -24,10 +27,11 @@ function route() {
   const h = location.hash.replace('#', '');
   const m = h.match(/^l-(\d-\d)$/);
   const l = m && byId(m[1]);
-  if (l) renderLesson(l); else if (h === 'map') { renderMap(); window.scrollTo(0, 0); } else if (h === 'about') { renderAbout(); window.scrollTo(0, 0); } else { renderHome(); window.scrollTo(0, 0); }
+  if (h === 'lab') { renderBitcoinLab(); window.scrollTo(0, 0); } else if (l) renderLesson(l); else if (h === 'map') { renderMap(); window.scrollTo(0, 0); } else if (h === 'about') { renderAbout(); window.scrollTo(0, 0); } else { renderHome(); window.scrollTo(0, 0); }
   updateMeter();
 }
 window.addEventListener('hashchange', route);
 document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 applyLang();
 route();
+
