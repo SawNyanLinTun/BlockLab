@@ -9,6 +9,7 @@ function updateMeter() {
   $('#meter-fill').style.width = (n / LESSONS.length * 100) + '%';
 }
 
-const setNav = view => { [['#nav-course', 'map'], ['#nav-about', 'about']].forEach(([sel, v]) => { const c = $(sel); if (view === v) c.setAttribute('aria-current', 'page'); else c.removeAttribute('aria-current'); }); };
+const setNav = view => { [['#nav-course', 'map'], ['#nav-about', 'about'], ['#nav-lab', 'lab']].forEach(([sel, v]) => { const c = $(sel); if (view === v) c.setAttribute('aria-current', 'page'); else c.removeAttribute('aria-current'); }); };
 
 export { setNav, updateMeter };
+
