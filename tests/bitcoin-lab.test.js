@@ -1,9 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createECDH, createPublicKey, createPrivateKey, verify as opensslVerify, sign as opensslSign } from 'node:crypto';
+import { webcrypto, createECDH, createPublicKey, createPrivateKey, verify as opensslVerify, sign as opensslSign } from 'node:crypto';
 import { publicKey, sign, verify, N } from '../src/lib/lab-keys.js';
 import { BitcoinLab, parseBTC, transactionMessage, FEE } from '../src/state/bitcoin-lab.js';
 import { LAB_COPY } from '../src/i18n/lab.js';
+if (!globalThis.crypto) globalThis.crypto = webcrypto;
 const d = '0'.repeat(63) + '1';
 function opensslKeys(key) {
   const e = createECDH('secp256k1'); e.setPrivateKey(Buffer.from(key, 'hex'));

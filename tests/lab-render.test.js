@@ -1,6 +1,8 @@
+import { webcrypto } from 'node:crypto';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { installShim, handlers } from './dom-shim.js';
+if (!globalThis.crypto) globalThis.crypto = webcrypto;
 const els = installShim();
 const { renderBitcoinLab } = await import('../src/views/bitcoin-lab.js');
 const state = await import('../src/state/bitcoin-lab.js');
